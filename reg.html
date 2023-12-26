@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="@Email" id="email"><br>
+        <input type="password" placeholder="Password" id="password"><br>
+        <button type="button" id="registrate">Зарегистрироваться</button>
+        <a href="../au/">Авторизоваться</a>
+    </form>
+    <p id="errors"></p>
+    <script>
+      
+        const METHOD            = 'POST';
+        const email             = document.querySelector('#email'),
+              password          = document.querySelector('#password'),
+              button            = document.querySelector('#registrate');
+              errors            = document.querySelector('#errors');
+ 
+         button.addEventListener('click', async (e)=>{
+             e.preventDefault();
+ 
+             let result = await fetch(
+                 URL_REGISTREXHION,
+                 {
+                     method: METHOD,
+                     
+                     body: JSON.stringify({
+                         'email':email.value,
+                         'password': password.value,
+                     })
+                 }
+             ).then ((response) => response.json())
+             
+             result = result.result
+ 
+                   
+         })
+     
+ 
+ 
+     </script>
+</body>
+</html>
